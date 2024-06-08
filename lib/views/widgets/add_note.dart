@@ -12,7 +12,6 @@ class AddNote extends StatefulWidget {
 class _AddNoteState extends State<AddNote> {
   TextEditingController _title = TextEditingController();
   TextEditingController _description = TextEditingController();
-  TextEditingController _createdData = TextEditingController();
 
   DateTime? timepicker;
   @override

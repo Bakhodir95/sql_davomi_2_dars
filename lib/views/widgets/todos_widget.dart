@@ -10,7 +10,10 @@ class TodosWidget extends StatefulWidget {
 class _TodosWidgetState extends State<TodosWidget> {
   @override
   Widget build(BuildContext context) {
-    return const InkWell(
+    return InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, "/todos");
+        },
         child: Card(
             color: Colors.amber,
             elevation: 4,

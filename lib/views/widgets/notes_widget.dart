@@ -10,8 +10,11 @@ class NotesWidget extends StatefulWidget {
 class _NotesWidgetState extends State<NotesWidget> {
   @override
   Widget build(BuildContext context) {
-    return const InkWell(
-        child: Card(
+    return InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, "/notes");
+        },
+        child: const Card(
             color: Colors.amber,
             elevation: 4,
             child: Padding(
