@@ -1,4 +1,4 @@
-import 'package:sql_davomi_2_dars/models/model.dart';
+import 'package:sql_davomi_2_dars/models/note_model.dart';
 import 'package:sql_davomi_2_dars/services/local_database.dart';
 
 class NoteController {
@@ -9,11 +9,7 @@ class NoteController {
 
   Future<List<NoteModel>> getNotes() async {
     final db = await _localDatabase.database;
-    // await db.insert("notes", {
-    //   "title": "salom",
-    //   "description": "salom",
-    //   "createdData": "2002-02-20"
-    // });
+
     List<NoteModel> notes = [];
     List<Map<String, dynamic>> datas = await db.query("notes");
 

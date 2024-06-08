@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sql_davomi_2_dars/controllers/controller.dart';
-import 'package:sql_davomi_2_dars/models/model.dart';
+import 'package:sql_davomi_2_dars/controllers/note_controller.dart';
+import 'package:sql_davomi_2_dars/models/note_model.dart';
 import 'package:sql_davomi_2_dars/views/widgets/add_note.dart';
 
 class NotesScreen extends StatefulWidget {
@@ -32,6 +32,15 @@ class _NotesScreenState extends State<NotesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Notes",
+          style: TextStyle(
+            color: Color.fromARGB(255, 22, 130, 26),
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: FutureBuilder(
         future: _noteController.getNotes(),
         builder: (context, snapshot) {

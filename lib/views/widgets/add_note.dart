@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sql_davomi_2_dars/models/model.dart';
+import 'package:sql_davomi_2_dars/models/note_model.dart';
 
 class AddNote extends StatefulWidget {
   Function() onAdd;

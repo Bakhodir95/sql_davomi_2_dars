@@ -12,7 +12,7 @@ class _TodosWidgetState extends State<TodosWidget> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          Navigator.pushNamed(context, "/todos");
+          Navigator.pushNamed(context, "/notes");
         },
         child: Card(
             color: Colors.amber,
