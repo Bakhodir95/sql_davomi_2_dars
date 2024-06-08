@@ -15,8 +15,8 @@ class SqlData extends StatelessWidget {
     return MaterialApp(
       initialRoute: "/",
       routes: {
-        "/": (ctx) => const MainScreen(),
-        "/home": (ctx) => const MainScreen(),
+        "/": (ctx) => const HomeScreen(),
+        "/home": (ctx) => const HomeScreen(),
         "/notes": (ctx) => const NotesScreen(),
         "/todos": (ctx) => const TodosWidget(),
       },

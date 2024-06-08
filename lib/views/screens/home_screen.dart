@@ -1,13 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
 import 'package:sql_davomi_2_dars/views/widgets/notes_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Colors.amber,
+        child: Padding(
+          padding: EdgeInsets.zero,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text(
+                  'Drawer Header',
+                  style: TextStyle(fontSize: 50),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotesScreen()),
+                  );
+                },
+                title: const Text("Admin Panel"),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotesScreen()),
+                  );
+                },
+                title: const Text("Settings"),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded),
+              )
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.yellow,
