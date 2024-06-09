@@ -10,22 +10,25 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.amber,
         child: Padding(
           padding: EdgeInsets.zero,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const DrawerHeader(
+                curve: Curves.bounceInOut,
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
                 child: Text(
-                  'Drawer Header',
-                  style: TextStyle(fontSize: 50),
+                  'Menyu',
+                  style: TextStyle(fontSize: 30),
                 ),
               ),
               ListTile(
+                tileColor: Colors.amber,
+                // splashColor: Colors.red,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -36,6 +39,7 @@ class HomeScreen extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios_rounded),
               ),
               ListTile(
+                tileColor: Colors.amber,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -50,6 +54,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        actions: [],
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.yellow,
         title: const Text("Todos"),

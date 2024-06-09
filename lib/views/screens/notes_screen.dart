@@ -13,8 +13,8 @@ class NotesScreen extends StatefulWidget {
 class _NotesScreenState extends State<NotesScreen> {
   final NoteController _noteController = NoteController();
 
-  TextEditingController _title = TextEditingController();
-  TextEditingController _description = TextEditingController();
+  final TextEditingController _title = TextEditingController();
+  final TextEditingController _description = TextEditingController();
 
   @override
   void initState() {
