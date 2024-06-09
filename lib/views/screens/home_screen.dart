@@ -1,72 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
+import 'package:gap/gap.dart';
+import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
+import 'package:sql_davomi_2_dars/views/widgets/drawer_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/notes_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        // backgroundColor: Colors.amber,
-        child: Padding(
-          padding: EdgeInsets.zero,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const DrawerHeader(
-                curve: Curves.bounceInOut,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text(
-                  'Menyu',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              ListTile(
-                tileColor: Colors.amber,
-                // splashColor: Colors.red,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NotesScreen()),
-                  );
-                },
-                title: const Text("Admin Panel"),
-                trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              ),
-              ListTile(
-                tileColor: Colors.amber,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NotesScreen()),
-                  );
-                },
-                title: const Text("Settings"),
-                trailing: const Icon(Icons.arrow_forward_ios_rounded),
-              )
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerWidget(),
       appBar: AppBar(
-        actions: [],
+        // actions: [],
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.yellow,
         title: const Text("Todos"),
         centerTitle: true,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+      body: Padding(
+        padding: EdgeInsets.all(25),
+        child: Column(
+          // mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: TodosWidget()),
-            Expanded(child: NotesWidget()),
+            const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(child: TodosWidget()),
+                Gap(20),
+                Expanded(child: NotesWidget()),
+              ],
+            ),
+            CoursesWidget(),
           ],
         ),
       ),

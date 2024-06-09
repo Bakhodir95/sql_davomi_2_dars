@@ -1,8 +1,8 @@
 import 'package:sql_davomi_2_dars/models/quiz_model.dart';
 
 class LessonModel {
-  int id;
-  int courseId;
+  String id;
+  String courseId;
   String title;
   String description;
   String videoUrl;

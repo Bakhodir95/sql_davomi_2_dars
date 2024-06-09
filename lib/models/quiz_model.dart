@@ -1,5 +1,5 @@
 class QuizModel {
-  int id;
+  String id;
   String question;
   List<String> options;
   int correctOptionIndex;

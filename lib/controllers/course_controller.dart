@@ -1,64 +1,77 @@
 import 'dart:convert';
-
-import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:sql_davomi_2_dars/models/course_model.dart';
+import 'package:sql_davomi_2_dars/models/lesson_model.dart';
+import 'package:sql_davomi_2_dars/models/quiz_model.dart';
 
 class CourseController {
   Future<List<CourseModel>> getCourses() async {
-    Uri url = Uri.parse(
-        "https://todonote-912ed-default-rtdb.firebaseio.com/courses.json/");
+    final Uri url = Uri.parse(
+        "https://todonote-912ed-default-rtdb.firebaseio.com/courses.json");
     final response = await http.get(url);
-    final data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = jsonDecode(response.body);
+      List<CourseModel> courses = [];
 
-    List<CourseModel> courses = [];
+      for (var entry in data.entries) {
+        String courseId = entry.key;
+        Map<String, dynamic> courseData = entry.value;
 
-    if (data != null) {
-      data.forEach((key, value) {
-        courses.add(CourseModel(
-            id: key,
-            description: value["description"],
-            imageUrl: value["imageUrl"],
-            lessons: value["lessons"],
-            tittle: value["title"]));
-      });
+        List<LessonModel> lessons = await getLessonsByCourseId(courseId);
+
+        CourseModel course = CourseModel(
+          id: courseId,
+          description: courseData['description'],
+          imageUrl: courseData['imageUrl'],
+          lessons: lessons,
+          title: courseData['title'],
+          price: courseData['price'].toString(),
+        );
+        print(course);
+        courses.add(course);
+      }
+
+      return courses;
+    } else {
+      throw Exception('Failed to load courses');
     }
-
-    return courses;
   }
 
-  Future<void> addCourses(
-      String description, String imageUrl, String lessons, String title) async {
-    Uri url = Uri.parse(
-        "https://todonote-912ed-default-rtdb.firebaseio.com/courses.json/");
-    final response = await http.post(url,
-        body: jsonEncode(
-          {
-            "description": description,
-            "imageUrl": imageUrl,
-            "lessons": lessons,
-            "title": title
-          },
-        ));
-    final data = jsonDecode(response.body);
-  }
+  Future<List<LessonModel>> getLessonsByCourseId(String courseId) async {
+    final Uri url = Uri.parse(
+        "https://todonote-912ed-default-rtdb.firebaseio.com/lessons.json");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = jsonDecode(response.body);
+      List<LessonModel> lessons = [];
 
-  Future<void> editCourses(String id, String description, String imageUrl,
-      String lessons, String title) async {
-    Uri url = Uri.parse(
-        "https://todonote-912ed-default-rtdb.firebaseio.com/courses/$id.json");
+      data.entries.forEach((entry) {
+        String lessonId = entry.key;
+        Map<String, dynamic> lessonData = entry.value;
+        if (lessonData['courseId'] == courseId) {
+          LessonModel lesson = LessonModel(
+            id: lessonId,
+            courseId: courseId,
+            description: lessonData['description'],
+            title: lessonData['title'],
+            videoUrl: lessonData['videoUrl'],
+            quizes: [
+              QuizModel(
+                id: "id",
+                question: "question",
+                options: ["options"],
+                correctOptionIndex: 1,
+              )
+            ],
+          );
 
-    final response = await http.patch(url,
-        body: jsonEncode({
-          "description": description,
-          "imageUrl": imageUrl,
-          "lessons": lessons,
-          "title": title
-        }));
-  }
+          lessons.add(lesson);
+        }
+      });
 
-  Future<void> deleteCourses(String id) async {
-    Uri url = Uri.parse(
-        "https://todonote-912ed-default-rtdb.firebaseio.com/courses/$id.json");
-    final respose = await http.delete(url);
+      return lessons;
+    } else {
+      throw Exception('Failed to load lessons');
+    }
   }
 }
