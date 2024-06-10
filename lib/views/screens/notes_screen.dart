@@ -4,7 +4,7 @@ import 'package:sql_davomi_2_dars/models/note_model.dart';
 import 'package:sql_davomi_2_dars/views/widgets/add_note.dart';
 
 class NotesScreen extends StatefulWidget {
-  const NotesScreen({Key? key}) : super(key: key);
+  const NotesScreen({super.key});
 
   @override
   State<NotesScreen> createState() => _NotesScreenState();

@@ -5,7 +5,7 @@ import 'package:sql_davomi_2_dars/views/screens/lessons_screen.dart';
 class CourseScreen extends StatelessWidget {
   final CourseModel courseModel;
 
-  CourseScreen(this.courseModel, {Key? key}) : super(key: key);
+  const CourseScreen(this.courseModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,12 @@ class CourseScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           courseModel.title,
-          style: TextStyle(fontSize: 40),
+          style: const TextStyle(fontSize: 40),
         ),
         centerTitle: true,
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         children: [
           Container(
             width: MediaQuery.of(context).size.width / 2,
@@ -33,7 +33,7 @@ class CourseScreen extends StatelessWidget {
                 if (loadingProgress == null) {
                   return child;
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -46,11 +46,13 @@ class CourseScreen extends StatelessWidget {
             children: [
               Text(
                 courseModel.description,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               Text(
                 "\$${courseModel.price}.0",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
               ),
             ],
           ),
@@ -60,7 +62,7 @@ class CourseScreen extends StatelessWidget {
           ),
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: courseModel.lessons.length,
             itemBuilder: (context, index) {
               final lesson = courseModel.lessons[index];
@@ -75,7 +77,7 @@ class CourseScreen extends StatelessWidget {
                     );
                   },
                   title: Text(lesson.title),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded),
                 ),
               );
             },

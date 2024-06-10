@@ -4,7 +4,7 @@ import 'package:sql_davomi_2_dars/services/local_database.dart';
 class NoteController {
   final _localDatabase = LocalDatabase();
 
-  List<NoteController> _list = [];
+  final List<NoteController> _list = [];
   List<NoteController> get list => [..._list];
 
   Future<List<NoteModel>> getNotes() async {

@@ -14,7 +14,7 @@ class _TodosWidgetState extends State<TodosWidget> {
         onTap: () {
           Navigator.pushNamed(context, "/notes");
         },
-        child: Card(
+        child: const Card(
             color: Colors.amber,
             elevation: 4,
             child: Padding(

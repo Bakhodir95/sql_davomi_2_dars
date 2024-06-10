@@ -5,7 +5,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LessonsScreen extends StatefulWidget {
   final LessonModel lesson;
-  LessonsScreen(this.lesson, {super.key});
+  const LessonsScreen(this.lesson, {super.key});
 
   @override
   State<LessonsScreen> createState() => _LessonsScreenState();

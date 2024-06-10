@@ -45,7 +45,7 @@ class CourseController {
       final Map<String, dynamic> data = jsonDecode(response.body);
       List<LessonModel> lessons = [];
 
-      data.entries.forEach((entry) {
+      for (var entry in data.entries) {
         String lessonId = entry.key;
         Map<String, dynamic> lessonData = entry.value;
         if (lessonData['courseId'] == courseId) {
@@ -67,7 +67,7 @@ class CourseController {
 
           lessons.add(lesson);
         }
-      });
+      }
 
       return lessons;
     } else {
