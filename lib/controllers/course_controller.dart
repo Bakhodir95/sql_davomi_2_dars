@@ -74,4 +74,31 @@ class CourseController {
       throw Exception('Failed to load lessons');
     }
   }
+
+  Future<void> addCourses(CourseModel course) async {
+    Uri url = Uri.parse(
+        "https://todonote-912ed-default-rtdb.firebaseio.com/courses.json");
+    final response = await http.post(url,
+        body: jsonEncode({
+          "description": course.description,
+          "title": course.title,
+          "price": course.price,
+          "imageUrl": course.imageUrl
+        }));
+    final data = jsonDecode(response.body);
+  }
+
+  Future<void> editCourses(CourseModel course) async {
+    final Uri url = Uri.parse(
+        "https://todonote-912ed-default-rtdb.firebaseio.com/courses/${course.id}.json");
+    final response = await http.patch(url,
+        body: jsonEncode({
+          "title": course.title,
+          "description": course.description,
+          "imageUrl": course.imageUrl,
+        }));
+    // if (response.statusCode ==200) {
+    //   int index =
+    // }
+  }
 }

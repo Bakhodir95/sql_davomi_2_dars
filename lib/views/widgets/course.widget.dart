@@ -69,10 +69,10 @@ class CoursesWidget extends StatelessWidget {
                           },
                           child: Container(
                             width: double.infinity,
-                            height: 300,
+                            height: 250,
                             clipBehavior: Clip.hardEdge,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(25),
                             ),
                             child: Image.network(
                               course.imageUrl,
@@ -86,7 +86,7 @@ class CoursesWidget extends StatelessWidget {
                               },
                               width: double.infinity,
                               height: 300,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),

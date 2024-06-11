@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sql_davomi_2_dars/views/screens/admin_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
 
@@ -29,7 +30,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NotesScreen()),
+                MaterialPageRoute(builder: (context) => AdminScreen()),
               );
             },
             title: const Text("Admin Panel"),
