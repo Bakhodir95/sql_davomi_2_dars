@@ -41,13 +41,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       } catch (e) {
         String message = e.toString();
         if (e.toString().contains("EMAIL_EXISTS")) {
-          message = "Email mavjud";
+          message = "Email exists";
         }
         showDialog(
           context: context,
           builder: (ctx) {
             return AlertDialog(
-              title: const Text("Xatolik"),
+              title: const Text("Error"),
               content: Text(message),
             );
           },
@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Iltimos elektron pochtangizni kiriting";
+                      return "Enter Email";
                     }
 
                     return null;
@@ -102,7 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Iltimos parolingizni kiriting";
+                      return "Enter Password";
                     }
 
                     return null;
@@ -151,12 +151,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (ctx) {
-                          return const SignUpScreen();
+                          return const SignIn();
                         },
                       ),
                     );
                   },
-                  child: const Text("Entrance"),
+                  child: const Text("SignIn"),
                 ),
               ],
             ),
