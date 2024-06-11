@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
+import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
@@ -34,6 +35,9 @@ class DrawerWidget extends StatelessWidget {
             title: const Text("Admin Panel"),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           ListTile(
             tileColor: Colors.amber,
             onTap: () {
@@ -43,6 +47,20 @@ class DrawerWidget extends StatelessWidget {
               );
             },
             title: const Text("Settings"),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          ListTile(
+            tileColor: Colors.amber,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+            title: const Text("Profile"),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
           )
         ],

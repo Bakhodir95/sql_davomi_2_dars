@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/controllers/sign_in_controller.dart';
 import 'package:sql_davomi_2_dars/views/screens/home_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
+import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/sign_in.dart';
 import 'package:sql_davomi_2_dars/views/screens/sign_up.dart';
 import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
@@ -44,9 +45,9 @@ class _SqlDataState extends State<SqlData> {
         "/courses": (ctx) => CoursesWidget(),
         "/signIn": (ctx) => const SignIn(),
         "/signUp": (ctx) => const SignUpScreen(),
+        "/profile": (ctx) => const ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
-      // home: MainScreen(),
     );
   }
 }
