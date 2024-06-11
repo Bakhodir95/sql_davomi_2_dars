@@ -7,6 +7,7 @@ class CourseModel {
   String imageUrl;
   List<LessonModel> lessons;
   String price;
+  bool isLike;
 
   CourseModel({
     required this.id,
@@ -15,5 +16,6 @@ class CourseModel {
     required this.imageUrl,
     required this.lessons,
     required this.title,
+    this.isLike = false,
   });
 }

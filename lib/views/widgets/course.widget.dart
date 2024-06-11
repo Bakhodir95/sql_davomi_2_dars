@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/controllers/course_controller.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
 
-class CoursesWidget extends StatelessWidget {
+class CoursesWidget extends StatefulWidget {
+  CoursesWidget({Key? key});
+
+  @override
+  State<CoursesWidget> createState() => _CoursesWidgetState();
+}
+
+class _CoursesWidgetState extends State<CoursesWidget> {
   final _controller = CourseController();
 
-  CoursesWidget({super.key});
+  Map<String, bool> courseIdToFavorited = {}; // Changed to Map<String, bool>
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +55,6 @@ class CoursesWidget extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            course
-                                .title, // Assuming the course model has a 'name' property
-                            style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -67,28 +63,65 @@ class CoursesWidget extends StatelessWidget {
                                     builder: (context) =>
                                         CourseScreen(course)));
                           },
-                          child: Container(
-                            width: double.infinity,
-                            height: 250,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Image.network(
-                              course.imageUrl,
-                              loadingBuilder:
-                                  (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                  return child;
-                                } else {
-                                  return const Text("Wait");
-                                }
-                              },
-                              width: double.infinity,
-                              height: 300,
-                              fit: BoxFit.contain,
-                            ),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: 250,
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                child: Image.network(
+                                  course.imageUrl,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child;
+                                    } else {
+                                      return const Text("Wait");
+                                    }
+                                  },
+                                  width: double.infinity,
+                                  height: 300,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ],
                           ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              course.title,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  courseIdToFavorited.update(
+                                    course.id,
+                                    (value) => !value,
+                                    ifAbsent: () => !course.isLike,
+                                  );
+                                });
+                              },
+                              icon: Icon(
+                                courseIdToFavorited[course.id] ?? course.isLike
+                                    ? Icons.favorite
+                                    : Icons.favorite_outline,
+                                color: courseIdToFavorited[course.id] ??
+                                        course.isLike
+                                    ? Colors.red
+                                    : null,
+                                size: 40,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     );

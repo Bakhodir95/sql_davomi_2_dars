@@ -20,6 +20,7 @@ class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: FutureBuilder(
         future: courseController.getCourses(),
         builder: (context, snapshot) {
@@ -37,7 +38,7 @@ class _AdminScreenState extends State<AdminScreen> {
             );
           }
           return Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -101,6 +102,7 @@ class _AdminScreenState extends State<AdminScreen> {
                               ),
                             ),
                           ),
+                          const Gap(20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -112,9 +114,12 @@ class _AdminScreenState extends State<AdminScreen> {
                                         fontSize: 25,
                                         fontWeight: FontWeight.w700),
                                   )),
-                              const Gap(30),
+                              const Gap(50),
                               FilledButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    // courseController.deleteCourses(course.id);
+                                    setState(() {});
+                                  },
                                   child: const Text(
                                     "Delete",
                                     style: TextStyle(

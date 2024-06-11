@@ -95,10 +95,18 @@ class CourseController {
         body: jsonEncode({
           "title": course.title,
           "description": course.description,
+          "price": course.price,
           "imageUrl": course.imageUrl,
         }));
     // if (response.statusCode ==200) {
     //   int index =
     // }
+  }
+
+  Future<void> deleteCourses(CourseModel course) async {
+    final Uri url = Uri.parse(
+        "https://todonote-912ed-default-rtdb.firebaseio.com/courses/${course.id}.json");
+
+    final response = await http.delete(url);
   }
 }
