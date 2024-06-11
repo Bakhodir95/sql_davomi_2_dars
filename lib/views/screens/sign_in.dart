@@ -39,6 +39,10 @@ class _SignInState extends State<SignIn> {
           ),
         );
       } on Exception catch (e) {
+        setState(() {
+          isLoading = false;
+        });
+
         String message = e.toString();
         if (e.toString().contains("EMAIL_EXISTS")) {
           message = "Email already exists";
