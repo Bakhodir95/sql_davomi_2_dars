@@ -61,7 +61,6 @@ class CoursesWidget extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            // Navigate to course details page
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -84,7 +83,7 @@ class CoursesWidget extends StatelessWidget {
                                 } else {
                                   return const Text("Wait");
                                 }
-                              }, // Use the URL from the course model
+                              },
                               width: double.infinity,
                               height: 300,
                               fit: BoxFit.cover,

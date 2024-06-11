@@ -13,7 +13,7 @@ class CourseScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           courseModel.title,
-          style: const TextStyle(fontSize: 40),
+          style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -66,20 +66,22 @@ class CourseScreen extends StatelessWidget {
             itemCount: courseModel.lessons.length,
             itemBuilder: (context, index) {
               final lesson = courseModel.lessons[index];
-              return Card(
-                child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LessonsScreen(lesson),
-                      ),
-                    );
-                  },
-                  title: Text(lesson.title),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded),
+              return Column(children: [
+                Card(
+                  child: ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LessonsScreen(lesson),
+                        ),
+                      );
+                    },
+                    title: Text(lesson.title),
+                    trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                  ),
                 ),
-              );
+              ]);
             },
           ),
         ],
