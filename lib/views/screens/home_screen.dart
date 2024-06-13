@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:sql_davomi_2_dars/utils/appconst.dart';
 import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/drawer_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/notes_widget.dart';
@@ -7,7 +8,8 @@ import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  Function() mainStateSet;
+  HomeScreen({super.key, required this.mainStateSet});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -19,13 +21,32 @@ class _HomeScreenState extends State<HomeScreen> {
   //   super.initState();
   //   filteredData = List.from(courses); // Initially, display all data
   // }
-
+  String selectedValue = 'En'; // Initial selected value
   @override
   Widget build(BuildContext contexst) {
     return Scaffold(
       drawer: const DrawerWidget(),
       appBar: AppBar(
-        actions: const [],
+        actions: [
+          DropdownButton(
+            value: Appconst.language,
+            items: const [
+              DropdownMenuItem(
+                child: Text("Uz"),
+                value: "uz",
+              ),
+              DropdownMenuItem(
+                child: Text("En"),
+                value: "en",
+              ),
+            ],
+            onChanged: (value) {
+              Appconst.language = value!;
+
+              widget.mainStateSet();
+            },
+          )
+        ],
         // backgroundColor: Colors.deepPurple,
         // foregroundColor: Colors.yellow,
         title: Text(AppLocalizations.of(context)!.todos),

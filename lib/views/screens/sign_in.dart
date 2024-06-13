@@ -34,7 +34,9 @@ class _SignInState extends State<SignIn> {
           context,
           MaterialPageRoute(
             builder: (ctx) {
-              return const HomeScreen();
+              return HomeScreen(
+                mainStateSet: () => setState(() {}),
+              );
             },
           ),
         );

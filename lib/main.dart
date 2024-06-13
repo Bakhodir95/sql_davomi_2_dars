@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/controllers/sign_in_controller.dart';
+import 'package:sql_davomi_2_dars/utils/appconst.dart';
 import 'package:sql_davomi_2_dars/views/screens/home_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
@@ -39,7 +40,11 @@ class _SqlDataState extends State<SqlData> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: isloginLast ? const HomeScreen() : const SignIn(),
+      home: isloginLast
+          ? HomeScreen(
+              mainStateSet: () => setState(() {}),
+            )
+          : const SignIn(),
       routes: {
         "/notes": (ctx) => const NotesScreen(),
         "/todos": (ctx) => const TodosWidget(),
@@ -49,7 +54,7 @@ class _SqlDataState extends State<SqlData> {
         "/profile": (ctx) => const ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
-      locale: const Locale("uz"),
+      locale: Locale(Appconst.language),
       title: "Localization",
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

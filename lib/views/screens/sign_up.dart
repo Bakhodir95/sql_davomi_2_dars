@@ -34,7 +34,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           context,
           MaterialPageRoute(
             builder: (ctx) {
-              return const HomeScreen();
+              return HomeScreen(
+                mainStateSet: () => setState(() {}),
+              );
             },
           ),
         );
