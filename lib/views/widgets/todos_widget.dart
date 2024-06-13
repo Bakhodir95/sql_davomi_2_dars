@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodosWidget extends StatefulWidget {
   const TodosWidget({super.key});
@@ -14,7 +15,7 @@ class _TodosWidgetState extends State<TodosWidget> {
         onTap: () {
           Navigator.pushNamed(context, "/notes");
         },
-        child: const Card(
+        child: Card(
             color: Colors.amber,
             elevation: 4,
             child: Padding(
@@ -24,7 +25,7 @@ class _TodosWidgetState extends State<TodosWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Todo',
+                    AppLocalizations.of(context)!.todo,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotesWidget extends StatefulWidget {
   const NotesWidget({super.key});
@@ -14,7 +15,7 @@ class _NotesWidgetState extends State<NotesWidget> {
         onTap: () {
           Navigator.pushNamed(context, "/notes");
         },
-        child: const Card(
+        child: Card(
             color: Colors.amber,
             elevation: 4,
             child: Padding(
@@ -24,7 +25,7 @@ class _NotesWidgetState extends State<NotesWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Notes',
+                    AppLocalizations.of(context)!.notes,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

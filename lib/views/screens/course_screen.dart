@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/screens/lessons_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CourseScreen extends StatelessWidget {
   final CourseModel courseModel;
@@ -56,8 +57,8 @@ class CourseScreen extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            "Lessons",
+          Text(
+            AppLocalizations.of(context)!.lessons,
             style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
           ),
           ListView.builder(

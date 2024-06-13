@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:sql_davomi_2_dars/controllers/course_controller.dart';
 import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -44,10 +45,10 @@ class _AdminScreenState extends State<AdminScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    "Courses",
+                    AppLocalizations.of(context)!.courses,
                     style: TextStyle(
                       color: Colors.red,
                       fontSize: 40,
@@ -110,8 +111,8 @@ class _AdminScreenState extends State<AdminScreen> {
                             children: [
                               OutlinedButton(
                                   onPressed: () {},
-                                  child: const Text(
-                                    "Edit",
+                                  child: Text(
+                                    AppLocalizations.of(context)!.edit,
                                     style: TextStyle(
                                         fontSize: 25,
                                         fontWeight: FontWeight.w700),
@@ -122,8 +123,8 @@ class _AdminScreenState extends State<AdminScreen> {
                                     // courseController.deleteCourses(course.id);
                                     setState(() {});
                                   },
-                                  child: const Text(
-                                    "Delete",
+                                  child: Text(
+                                    AppLocalizations.of(context)!.delete,
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w700,

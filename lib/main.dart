@@ -7,6 +7,7 @@ import 'package:sql_davomi_2_dars/views/screens/sign_in.dart';
 import 'package:sql_davomi_2_dars/views/screens/sign_up.dart';
 import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main(List<String> args) {
   runApp(const SqlData());
@@ -42,12 +43,16 @@ class _SqlDataState extends State<SqlData> {
       routes: {
         "/notes": (ctx) => const NotesScreen(),
         "/todos": (ctx) => const TodosWidget(),
-        "/courses": (ctx) => CoursesWidget(),
+        "/courses": (ctx) => const CoursesWidget(),
         "/signIn": (ctx) => const SignIn(),
         "/signUp": (ctx) => const SignUpScreen(),
         "/profile": (ctx) => const ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
+      locale: const Locale("uz"),
+      title: "Localization",
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         colorSchemeSeed: Colors.blue.shade600,
       ),

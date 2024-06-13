@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/controllers/note_controller.dart';
 import 'package:sql_davomi_2_dars/models/note_model.dart';
 import 'package:sql_davomi_2_dars/views/widgets/add_note.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});
@@ -33,8 +34,8 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Notes",
+        title: Text(
+          AppLocalizations.of(context)!.notes,
           style: TextStyle(
             color: Color.fromARGB(255, 22, 130, 26),
           ),
@@ -75,21 +76,29 @@ class _NotesScreenState extends State<NotesScreen> {
                               NoteModel response = await showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                        title: const Text("Add Notes"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .addnotes),
                                         content: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             TextField(
                                               controller: _title,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                   border: OutlineInputBorder(),
-                                                  labelText: "Title"),
+                                                  labelText:
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .title),
                                             ),
                                             TextField(
                                               controller: _description,
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                   border: OutlineInputBorder(),
-                                                  labelText: "Description"),
+                                                  labelText:
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .description),
                                             ),
                                             TextButton(
                                                 onPressed: () async {
@@ -103,7 +112,9 @@ class _NotesScreenState extends State<NotesScreen> {
                                                   setState(() {});
                                                 },
                                                 child: Text(timepicker == null
-                                                    ? "enter date"
+                                                    ? AppLocalizations.of(
+                                                            context)!
+                                                        .enterdate
                                                     : "${timepicker!.year}-${timepicker!.month}-${timepicker!.day}"))
                                           ],
                                         ),
@@ -112,7 +123,9 @@ class _NotesScreenState extends State<NotesScreen> {
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
-                                              child: const Text("Cancel")),
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel)),
                                           FilledButton(
                                               onPressed: () {
                                                 if (timepicker != null) {
@@ -128,7 +141,9 @@ class _NotesScreenState extends State<NotesScreen> {
                                                   );
                                                 }
                                               },
-                                              child: const Text("Save"))
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .save))
                                         ],
                                       ));
 

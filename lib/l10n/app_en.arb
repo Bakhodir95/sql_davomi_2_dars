@@ -1,0 +1,61 @@
+{
+    "helloWorld": "HelloWorld!",
+    "@helloWorld":{
+        "description": "The conventional newborn programmer greeting"
+        
+    },
+
+    "todos": "Todos",
+    "todo": "Todo",
+    "notes": "Notes",
+    "courses": "Courses",
+    "python" : "Python",
+    "javascript": "JavaScript",
+    "home": "Home",
+    "menyu": "Menyu",
+    "adminPanel": "Admin Panel",
+    "settings": "Settings",
+    "profile": "Profile",
+    "prepairing": "prepairimg for exams",
+    "lessons": "Lessons",
+    "data" : "Data Type",
+    "classlar" : "Class",
+    "uploading": "uploading python devices",
+    "functions": "Functions",
+    "error": "Error Catch",
+    "edit": "Edit",
+    "delete": " Delete",
+    "addnotes": "Add Notes",
+    "title": "Title",
+    "description": "Description",
+    "enterdate": "Enter Date",
+    "cancel": "Cancel",
+    "save": "Save",
+    "editnotes": "Edit Notes",
+
+
+    
+    "apple": "apple",
+    "iPhone_15_ProMax": "iPhone 15 ProMax",
+
+    "hello": "Hello {userName}",
+    "@hello":{
+        "description": "A message with a single parametr",
+        "placeholders": {
+            "userName":{"type": "String",
+            "example": "Botir"}
+        }
+    },
+    "apples": "{count, plural, =0{no apples} =1{1 apple} other{{count} apples}}",
+    "@apples": {
+        "description": "A plural message",
+        "placeholders": {
+            "count": {
+                "type":"num",
+                "format":"compact"
+            }
+        }
+    }
+
+
+}

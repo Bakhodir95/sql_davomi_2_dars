@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/models/note_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddNote extends StatefulWidget {
   Function() onAdd;
@@ -17,19 +18,25 @@ class _AddNoteState extends State<AddNote> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Add Notes"),
+      title: Text(
+        AppLocalizations.of(context)!.addnotes,
+      ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: _title,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), labelText: "Title"),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: AppLocalizations.of(context)!.title,
+            ),
           ),
           TextField(
             controller: _description,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), labelText: "Description"),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: AppLocalizations.of(context)!.description,
+            ),
           ),
           TextButton(
               onPressed: () async {
@@ -40,7 +47,7 @@ class _AddNoteState extends State<AddNote> {
                 setState(() {});
               },
               child: Text(timepicker == null
-                  ? "enter date"
+                  ? AppLocalizations.of(context)!.enterdate
                   : "${timepicker!.year}-${timepicker!.month}-${timepicker!.day}"))
         ],
       ),
@@ -49,7 +56,9 @@ class _AddNoteState extends State<AddNote> {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Cancel")),
+            child: Text(
+              AppLocalizations.of(context)!.cancel,
+            )),
         FilledButton(
             onPressed: () {
               if (timepicker != null) {
@@ -64,7 +73,9 @@ class _AddNoteState extends State<AddNote> {
                 widget.onAdd();
               }
             },
-            child: const Text("Save"))
+            child: Text(
+              AppLocalizations.of(context)!.save,
+            ))
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/views/screens/admin_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -12,7 +13,7 @@ class DrawerWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             curve: Curves.bounceInOut,
             decoration: BoxDecoration(
               color: Colors.blue,
@@ -20,7 +21,7 @@ class DrawerWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Menyu',
+                  AppLocalizations.of(context)!.menyu,
                   style: TextStyle(fontSize: 50),
                 ),
               ],
@@ -32,10 +33,12 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AdminScreen()),
+                MaterialPageRoute(builder: (context) => const AdminScreen()),
               );
             },
-            title: const Text("Admin Panel"),
+            title: Text(
+              AppLocalizations.of(context)!.adminPanel,
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
           ),
           const SizedBox(
@@ -49,7 +52,9 @@ class DrawerWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const NotesScreen()),
               );
             },
-            title: const Text("Settings"),
+            title: Text(
+              AppLocalizations.of(context)!.settings,
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
           ),
           const SizedBox(
@@ -63,7 +68,9 @@ class DrawerWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const ProfileScreen()),
               );
             },
-            title: const Text("Profile"),
+            title: Text(
+              AppLocalizations.of(context)!.profile,
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
           )
         ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/models/course_model.dart';
-import 'package:sql_davomi_2_dars/models/lesson_model.dart';
 
 class SearchViewDelegate extends SearchDelegate<CourseModel> {
   List<CourseModel> data;

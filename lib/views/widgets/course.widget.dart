@@ -3,8 +3,11 @@ import 'package:sql_davomi_2_dars/controllers/course_controller.dart';
 import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
 import 'package:sql_davomi_2_dars/views/widgets/search_view_delegate.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CoursesWidget extends StatefulWidget {
+  const CoursesWidget({super.key});
+
   // const CoursesWidget({super.key, Key? ey});
 
   @override
@@ -44,11 +47,11 @@ class _CoursesWidgetState extends State<CoursesWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    const Text(
-                      "Courses",
+                    Text(
+                      AppLocalizations.of(context)!.courses,
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 40,
@@ -69,7 +72,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                         setState(() {});
                         print(result);
                       },
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                     )
                   ],
                 ),

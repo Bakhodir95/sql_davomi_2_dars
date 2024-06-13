@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/drawer_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/notes_widget.dart';
-import 'package:sql_davomi_2_dars/views/widgets/search_view_delegate.dart';
 import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,21 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext contexst) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
-        actions: [],
+        actions: const [],
         // backgroundColor: Colors.deepPurple,
         // foregroundColor: Colors.yellow,
-        title: const Text("Todos"),
+        title: Text(AppLocalizations.of(context)!.todos),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
+      body: const Padding(
+        padding: EdgeInsets.all(15),
         child: Column(
           // mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(child: TodosWidget()),
@@ -55,12 +54,12 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.blue,
         selectedItemColor: Colors.red,
         onTap: (value) => value,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
-            label: 'Home',
+            label: AppLocalizations.of(context)!.home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
