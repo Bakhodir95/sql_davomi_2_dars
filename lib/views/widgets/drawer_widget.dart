@@ -4,6 +4,8 @@ import 'package:sql_davomi_2_dars/views/screens/notes_screen.dart';
 import 'package:sql_davomi_2_dars/views/screens/profile_screen.dart';
 
 class DrawerWidget extends StatelessWidget {
+  const DrawerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -44,7 +46,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NotesScreen()),
+                MaterialPageRoute(builder: (context) => const NotesScreen()),
               );
             },
             title: const Text("Settings"),
@@ -58,7 +60,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
+                MaterialPageRoute(builder: (context) => const ProfileScreen()),
               );
             },
             title: const Text("Profile"),

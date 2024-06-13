@@ -3,7 +3,7 @@ import 'package:sql_davomi_2_dars/controllers/course_controller.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
 
 class CoursesWidget extends StatefulWidget {
-  CoursesWidget({Key? key});
+  // const CoursesWidget({super.key, Key? key});
 
   @override
   State<CoursesWidget> createState() => _CoursesWidgetState();

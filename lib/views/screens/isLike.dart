@@ -12,6 +12,6 @@ class _IsLikeState extends State<IsLike> {
   bool isLike = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

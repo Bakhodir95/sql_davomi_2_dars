@@ -5,6 +5,8 @@ import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
 
 class AdminScreen extends StatefulWidget {
+  const AdminScreen({super.key});
+
   @override
   State<AdminScreen> createState() => _AdminScreenState();
 }
@@ -197,16 +199,14 @@ class _AdminScreenState extends State<AdminScreen> {
                   ],
                 );
               });
-          if (response != null) {
-            //! Add new Courses
-            print(response.title);
-            titleController.clear();
-            descController.clear();
-            imageUrlController.clear();
-            priceController.clear();
-            await courseController.addCourses(response);
-            setState(() {});
-          }
+          //! Add new Courses
+          print(response.title);
+          titleController.clear();
+          descController.clear();
+          imageUrlController.clear();
+          priceController.clear();
+          await courseController.addCourses(response);
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),

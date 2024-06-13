@@ -38,7 +38,7 @@ class _SqlDataState extends State<SqlData> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: isloginLast ? HomeScreen() : SignIn(),
+      home: isloginLast ? const HomeScreen() : const SignIn(),
       routes: {
         "/notes": (ctx) => const NotesScreen(),
         "/todos": (ctx) => const TodosWidget(),
