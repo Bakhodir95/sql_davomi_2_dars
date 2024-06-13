@@ -48,6 +48,9 @@ class _SqlDataState extends State<SqlData> {
         "/profile": (ctx) => const ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.blue.shade600,
+      ),
     );
   }
 }

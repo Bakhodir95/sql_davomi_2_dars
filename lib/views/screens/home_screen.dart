@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/widgets/course.widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/drawer_widget.dart';
 import 'package:sql_davomi_2_dars/views/widgets/notes_widget.dart';
+import 'package:sql_davomi_2_dars/views/widgets/search_view_delegate.dart';
 import 'package:sql_davomi_2_dars/views/widgets/todos_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   filteredData = List.from(courses); // Initially, display all data
+  // }
+
+  @override
+  Widget build(BuildContext contexst) {
     return Scaffold(
       drawer: DrawerWidget(),
       appBar: AppBar(
-        // actions: [],
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.yellow,
+        actions: [],
+        // backgroundColor: Colors.deepPurple,
+        // foregroundColor: Colors.yellow,
         title: const Text("Todos"),
         centerTitle: true,
       ),

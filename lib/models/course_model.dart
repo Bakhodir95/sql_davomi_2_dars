@@ -18,4 +18,5 @@ class CourseModel {
     required this.title,
     this.isLike = false,
   });
+  contains(String query) {}
 }

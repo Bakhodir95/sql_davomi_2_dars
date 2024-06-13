@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/controllers/course_controller.dart';
+import 'package:sql_davomi_2_dars/models/course_model.dart';
 import 'package:sql_davomi_2_dars/views/screens/course_screen.dart';
+import 'package:sql_davomi_2_dars/views/widgets/search_view_delegate.dart';
 
 class CoursesWidget extends StatefulWidget {
-  // const CoursesWidget({super.key, Key? key});
+  // const CoursesWidget({super.key, Key? ey});
 
   @override
   State<CoursesWidget> createState() => _CoursesWidgetState();
@@ -12,7 +14,8 @@ class CoursesWidget extends StatefulWidget {
 class _CoursesWidgetState extends State<CoursesWidget> {
   final _controller = CourseController();
 
-  Map<String, bool> courseIdToFavorited = {}; // Changed to Map<String, bool>
+  Map<String, bool> courseIdToFavorited = {};
+  List<CourseModel> filteredData = []; // Changed to Map<String, bool>
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +36,49 @@ class _CoursesWidgetState extends State<CoursesWidget> {
               child: Text(snapshot.error.toString()),
             );
           }
+          List<CourseModel> courses = snapshot.data!;
+          if (filteredData.isNotEmpty) {
+            courses = filteredData;
+          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Courses",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Row(
+                  children: [
+                    const Text(
+                      "Courses",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () async {
+                        filteredData.clear();
+                        CourseModel? result = await showSearch(
+                          context: context,
+                          delegate: SearchViewDelegate(
+                              snapshot.data!), // Pass snapshot.data
+                        );
+                        if (result != null) {
+                          filteredData.add(result);
+                        }
+                        setState(() {});
+                        print(result);
+                      },
+                      icon: Icon(Icons.search),
+                    )
+                  ],
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: snapshot.data!.length,
+                  itemCount: courses.length,
                   itemBuilder: (context, index) {
-                    final course = snapshot.data![index];
+                    final course = courses[index];
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
