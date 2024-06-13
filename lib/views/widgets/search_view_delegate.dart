@@ -28,7 +28,7 @@ class SearchViewDelegate extends SearchDelegate<CourseModel> {
                 id: "id",
                 price: "price",
                 description: "price",
-                imageUrl: "imageUrl",
+                imageUrl: "",
                 lessons: List.empty(),
                 title: ""));
       },
@@ -55,7 +55,6 @@ class SearchViewDelegate extends SearchDelegate<CourseModel> {
             ),
           );
         });
-    ;
   }
 
   @override
