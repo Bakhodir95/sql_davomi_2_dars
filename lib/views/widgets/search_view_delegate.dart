@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sql_davomi_2_dars/models/course_model.dart';
 
-class SearchViewDelegate extends SearchDelegate<CourseModel> {
+class SearchViewDelegate extends SearchDelegate<List<CourseModel>> {
   List<CourseModel> data;
   SearchViewDelegate(this.data);
   @override
@@ -21,15 +21,7 @@ class SearchViewDelegate extends SearchDelegate<CourseModel> {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       onPressed: () {
-        close(
-            context,
-            CourseModel(
-                id: "id",
-                price: "price",
-                description: "price",
-                imageUrl: "",
-                lessons: List.empty(),
-                title: ""));
+        close(context, data);
       },
       icon: const Icon(
         Icons.arrow_back,
@@ -47,7 +39,7 @@ class SearchViewDelegate extends SearchDelegate<CourseModel> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              close(context, suggestionList[index]);
+              close(context, [suggestionList[index]]);
             },
             title: Text(
               suggestionList[index].toString(),
@@ -72,7 +64,7 @@ class SearchViewDelegate extends SearchDelegate<CourseModel> {
           return ListTile(
             leading: Image.network(suggestionList[index].imageUrl),
             onTap: () {
-              close(context, suggestionList[index]);
+              close(context, [suggestionList[index]]);
             },
             title: Text(
               suggestionList[index].title,

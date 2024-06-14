@@ -61,13 +61,12 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                     IconButton(
                       onPressed: () async {
                         filteredData.clear();
-                        CourseModel? result = await showSearch(
+                        List<CourseModel>? result = await showSearch(
                           context: context,
-                          delegate: SearchViewDelegate(
-                              snapshot.data!), // Pass snapshot.data
+                          delegate: SearchViewDelegate(snapshot.data!),
                         );
                         if (result != null) {
-                          filteredData.add(result);
+                          filteredData.addAll(result);
                         }
                         setState(() {});
                         print(result);
